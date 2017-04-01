@@ -1,8 +1,9 @@
 @extends('template')
+
+@section('content')
 <h1>edit</h1>
 
-<!-- Display Validation Errors -->
-@include('common.errors')
+
 
 <!-- New Task Form -->
         <form action="/edit" method="POST" class="form-horizontal">
@@ -26,3 +27,4 @@
                 </div>
             </div>
         </form>
+@endsection

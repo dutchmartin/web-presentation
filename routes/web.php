@@ -23,24 +23,7 @@ Route::get('present', function () {
   $slides = slides::all();
     return view('presentation', compact('slides'));
 });
-Route::get('edit', function()
-{
-  return view('edit');
-});
-Route::post('/edit', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|max:255',
-    ]);
 
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
+Route::get('/edit', 'slidescontroller@index');
 
-    $slide = new Slide;
-    $slide->name = $request->name;
-    $slide->save();
-
-    return redirect('/');
-});
+Route::post('/edit', 'slidescontroller@submit');
