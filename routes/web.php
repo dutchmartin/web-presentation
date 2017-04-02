@@ -16,14 +16,11 @@ use App\slides;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('login', function() {
-    return view('login');
-})->name('login');
 Route::get('present', function () {
   $slides = slides::all();
     return view('presentation', compact('slides'));
 });
 
 Route::get('/edit', 'slidescontroller@index');
-
+// not functional for now
 Route::post('/edit', 'slidescontroller@submit');

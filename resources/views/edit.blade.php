@@ -1,30 +1,29 @@
 @extends('template')
 
 @section('content')
-<h1>edit</h1>
+<h1>edit slides</h1>
 
 
 
-<!-- New Task Form -->
-        <form action="/edit" method="POST" class="form-horizontal">
+<!-- slides Form -->
+        <form action="/edit" method="POST">
             {{ csrf_field() }}
 
             <!-- Task Name -->
             <div class="form-group">
-                <label for="task" class="col-sm-3 control-label">slide</label>
-
-                <div class="col-sm-6">
-                    <input type="text" name="name" id="slidecontent" class="form-control">
-                </div>
+              @foreach ($slides as $slide)
+                <label>slide {{$slide->id}}</label>
+                <textarea name=" {{$slide->id}}" id=" {{$slide->id}}"> {{$slide->slidecode}}</textarea>
+              @endforeach
+              <label>new slide</label>
+              <textarea name="new" id="new"></textarea>
             </div>
 
-            <!-- Add Task Button -->
-            <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-6">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fa fa-plus"></i> Add Slide
+            <!-- submit Button -->
+                <div>
+                    <button type="submit">
+                        Submit Slides
                     </button>
                 </div>
-            </div>
         </form>
 @endsection
